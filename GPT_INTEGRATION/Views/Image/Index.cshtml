@@ -1,0 +1,66 @@
+﻿@model List<ChatMessage> 
+
+<form asp-action="UploadImage" class="container" id="questionForm" method="post" enctype="multipart/form-data" id="imageUploadForm">
+    <div class="row">
+        <div class="col-4">                
+            <div class="messages">
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var message in Model)
+                    {
+
+                        if (!message.IsUser)
+                        {
+                            <div id="responseDisplay" class="response" style="text-align:left">                                                                  
+                                    <pre>@message.Content</pre>
+                            </div>          
+                        }
+                        else
+                        {
+                            <div id="responseDisplay" class="question" style="text-align:right">                                                                        
+                                    <pre>@message.Content</pre>
+                            </div>                          
+                        }
+                    }
+                }
+            </div>                
+            <div class="textMessage">
+                <input for="question" type="text" name="question" placeholder="Sorunuzu buraya girin" required />
+                <button type="submit" class="btn ">Gönder</button>    
+                <input type="file" id="file-input" class="file-input" name="image" accept="image/*" style="display:none;" onchange="updateLabel()" />
+                <button type="button" class="resim-button" onclick="document.getElementById('file-input').click();">Görsel Yükle</button>
+            </div>
+        </div>   
+    </div>
+</form>            
+
+
+<script>
+    //<input type="file" id="file-input" class="file-input" name="image" accept="image/*" style="display:none;" onchange="updateLabel()" />
+
+    // 
+
+    //id = "responseArea"
+
+    // document.getElementById('questionForm').addEventListener('submit', function (e) {
+    //     e.preventDefault();  // Formun normal yolla gönderilmesini engelle
+
+    //     var question = document.getElementById('question').value;
+    //     fetch('/Image/UploadImage', {  // Sunucu tarafı işlem yolunu girin
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json'
+    //         },
+    //         body: JSON.stringify({ question: question })
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             document.getElementById('responseArea').innerHTML = data.response;  // Yanıtı arayüzde göster
+    //         })
+    //         .catch(error => console.error('Error:', error));
+    // });
+</script>
+
+
+

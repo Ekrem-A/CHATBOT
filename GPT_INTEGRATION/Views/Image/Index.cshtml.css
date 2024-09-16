@@ -1,0 +1,92 @@
+﻿.container {
+    justify-content: center; /* Yatay hizalamayı merkeze al */
+    align-items: center;    
+}
+
+.row {
+    justify-content: center; /* Yatay hizalamayı merkeze al */
+    align-items: center;
+    
+}
+
+.col-4 {
+    justify-content: center; /* Yatay hizalamayı merkeze al */
+    align-items: center;
+    
+}
+
+.form-row{
+
+}
+
+.response-block{
+
+}
+.responseDisplay{
+
+}
+
+
+.messages {
+    height: 500px;
+    width: 100%;
+    background-color: #eee;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    /*overflow-y: scroll;*/
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.response {
+    float: left;
+    background-color: gray;
+    width: 80%;
+    padding: 20px;
+    margin: 5px 20px;
+    border-radius: 20px 20px 20px 0;
+    color: white;
+    font-size: 13px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.question {
+    float: right;
+    background-color: coral;
+    width: 80%;
+    padding: 20px;
+    margin: 5px 20px;
+    border-radius: 20px 20px 0 20px;
+    color: white;
+    font-size: 13px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.textMessage input {
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background-color: lightgray;
+}
+
+    .textMessage input:focus {
+        outline: none;
+    }
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    color: white;
+    background-color: coral;
+    border: none;
+    border-radius: 0 0 20px 20px;
+}
+
+.resim-button {
+    color: white;
+    background-color: coral;
+    border: none;
+    border-radius: 0 0 20px 20px;
+}
