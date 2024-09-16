@@ -1,3 +1,4 @@
+using GPT_INTEGRATION.Data;
 using GPT_INTEGRATION.Models;
 using GPT_INTEGRATION.Services;
 using Microsoft.AspNetCore.Identity;
@@ -33,8 +34,8 @@ builder.Services.AddSingleton(new OpenAIService(apiKey));
 
 
 
-//builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //builder.Services.ConfigureApplicationCookie(options =>
 //{

@@ -36,6 +36,7 @@ namespace GPT_INTEGRATION.Models
                 };
             }
 
+
             await userManager.CreateAsync(user, adminPassword);
         }
     }

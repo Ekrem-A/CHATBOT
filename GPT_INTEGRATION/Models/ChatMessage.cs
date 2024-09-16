@@ -10,6 +10,7 @@
         public required string Content { get; set; }
         public bool IsUser { get; set; } // True if message from user, false if from assistant
         //public required string Document { get; set; }
+        public string Login{ get; set; }
 
     }
 
