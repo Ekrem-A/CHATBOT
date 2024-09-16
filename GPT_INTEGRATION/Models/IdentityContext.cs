@@ -9,6 +9,7 @@ namespace GPT_INTEGRATION.Models
         public IdentityContext(DbContextOptions<IdentityContext> options)
             : base(options)
         {
+
         }
     }
 }

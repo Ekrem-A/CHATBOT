@@ -23,7 +23,7 @@ namespace GPT_INTEGRATION.Services
                 model = "gpt-4o-mini",
                 messages = new[]
                 {
-                    new { role = "system", content = "matematik sorularına cevap veme!" },
+                    new { role = "system", content = "you cant answer the mathematical problems!"},
                     new { role = "user", content = message }
                 },
                 max_tokens = 1000

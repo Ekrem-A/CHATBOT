@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Web">
 	
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -8,12 +9,15 @@
     <UserSecretsId>7f462b9f-0dae-4e44-9677-43a8e41a6779</UserSecretsId>
   </PropertyGroup>
 
-	<!--<ItemGroup Condition="'$(DotNetWatchBuild)'=='true'">
-		--><!-- only included in the project when dotnet-watch is running --><!--
+  <ItemGroup>
+    <Content Include="Anayasa.pdf" />
+  </ItemGroup>
+	<ItemGroup Condition="'$(DotNetWatchBuild)'=='true'">
+		<!-- only included in the project when dotnet-watch is running -->
 	</ItemGroup>
 	<ItemGroup>
 		<Watch Include="**\*.js" Exclude="node_modules\**\*;**\*.js.map;obj\**\*;bin\**\*" />
-	</ItemGroup>-->
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
@@ -49,6 +53,6 @@
     <Folder Include="wwwroot\image\" />
   </ItemGroup>
 
-  <!--<ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://json.schemastore.org/azure-iot-edge-deployment-2.0.json" appsettings_1json__JsonSchema="https://json.schemastore.org/azure-containerapp-template.json" /></VisualStudio></ProjectExtensions>-->
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://json.schemastore.org/azure-iot-edge-deployment-2.0.json" appsettings_1json__JsonSchema="https://json.schemastore.org/nuget-project.json" /></VisualStudio></ProjectExtensions>
 
 </Project>
