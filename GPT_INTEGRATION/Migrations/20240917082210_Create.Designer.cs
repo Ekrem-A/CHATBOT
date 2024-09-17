@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GPT_INTEGRATION.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20240912135202_create")]
-    partial class create
+    [Migration("20240917082210_Create")]
+    partial class Create
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

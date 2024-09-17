@@ -34,8 +34,6 @@ namespace GPT_INTEGRATION.Models
                     PhoneNumber = "1234567890"
                 };
             }
-
-
             await userManager.CreateAsync(user, adminPassword);
         }
     }
