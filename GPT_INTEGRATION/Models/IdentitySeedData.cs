@@ -2,8 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace GPT_INTEGRATION.Models
-{
-    public static class IdentitySeedData
+{    public static class IdentitySeedData
     {
         // Admin kullanıcısı oluşturuldu
         private const string adminUser = "Admin";
