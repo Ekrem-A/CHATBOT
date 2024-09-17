@@ -10,6 +10,7 @@ namespace GPT_INTEGRATION.Controllers
     {
 
         private readonly OpenAIService _openAIService = openAIService;
+        
         //public string documentContent = ExtractTextFromPdf("Anayasa.pdf");
 
 
