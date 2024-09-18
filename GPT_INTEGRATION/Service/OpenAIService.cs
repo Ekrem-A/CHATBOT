@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
 
+
 namespace GPT_INTEGRATION.Services
 {
     public class OpenAIService
