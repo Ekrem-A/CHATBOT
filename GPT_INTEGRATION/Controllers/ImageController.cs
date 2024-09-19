@@ -1,5 +1,5 @@
 ﻿using GPT_INTEGRATION.Models;
-using GPT_INTEGRATION.Services;
+using GPT_INTEGRATION.Service;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 

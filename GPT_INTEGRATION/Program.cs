@@ -1,10 +1,10 @@
-//using GPT_INTEGRATION.Data;
 using GPT_INTEGRATION.Models;
-using GPT_INTEGRATION.Services;
+using GPT_INTEGRATION.Service;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
     new SmtpEmailSender(
         builder.Configuration["EmailSender:Host"],
@@ -32,8 +32,8 @@ builder.Services.AddDbContext<IdentityContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //// Identity hizmetini ekleyin
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityContext>();
+//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+//    .AddEntityFrameworkStores<IdentityContext>();
 
 // OpenAIService'i Dependency Injection'a ekleyin
 builder.Services.AddSingleton(new OpenAIService(apiKey));
@@ -81,19 +81,21 @@ builder.Services.ConfigureApplicationCookie(options => {
 
 var app = builder.Build();
 
-//// Configure the HTTP request pipeline.
-//if (!app.Environment.IsDevelopment())
-//{
-//    app.UseExceptionHandler("/Home/Error");
-//    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-//    app.UseHsts();
-//}
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseSession();
 
