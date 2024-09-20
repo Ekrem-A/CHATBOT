@@ -1,37 +1,133 @@
 ﻿@model List<ChatMessage> 
 
-<form asp-action="UploadImage" class="container" id="questionForm" method="post" enctype="multipart/form-data" id="imageUploadForm">
-    <div class="row">
-        <div class="col-4">                
-            <div class="messages">
+<form asp-action="UploadImage" class="container" id="questionForm" method="post" enctype="multipart/form-data" id="imageUploadForm">      
+   
+@*     <button class="chatbot-toggler">
+        <span class="material-symbols-rounded">mode_comment</span>
+        <span class="material-symbols-outlined">close</span>
+    </button>
+    <div class="chatbot">
+        <header>
+            <h2>Chatbot</h2>
+            <span class="close-btn material-symbols-outlined">close</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br>How can I help you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+        </div>
+    </div> *@
+    
+@* 
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <p>@testing</p>
+            </div>
+            <div class="col-4">
+                <div class="messages">
+                    @for (int i = 0; i < messages.Count; i++)
+                    {
+                        @if (i % 2 == 0)
+                        {
+                            <div class="question">@messages[i]</div>
+                        }
+                        else
+                        {
+                            <div class="response">@messages[i]</div>
+                        }
+                    }
+
+                </div>
+                <div class="textMessage">
+                    <input @bind="message" />
+                    <button @onclick="SendMessage">Send</button>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+
+        </div>
+    </div>
+ *@
+
+   @*  <div class="chat-container">
+        <div class="chat-header">
+
+            <div class="user-info">
+                <img src="~/images/user-icon.png" alt="User Icon">  <h2>Sohbet et John</h2>
+            </div>
+            <div class="options">
+                <span class="material-icons">more_vert</span>
+                <span class="material-icons">expand_more</span>
+            </div>
+        </div>
+        <div class="chat-body">
+            <ul class="chat-messages">
+                @if (Model != null && Model.Count > 0)
+                {
+                    @foreach (var message in Model)
+                    {
+                        <li class="@(message.IsUser ? "user-message" : "bot-message")">
+                            <p>@message.Content</p>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="message-input" placeholder="Mesajınızı girin...">
+            <button id="send-button">
+                <span class="material-icons">send</span>
+            </button>           
+        </div>
+    </div>
+
+    <script src="~/js/script.js"></script>  *@
+
+
+    <div class="container">
+        <div class="row">          
+            <div class="col-4">
+                <div class="messages">
                 @if (Model != null && Model.Count > 0)
                 {
                     foreach (var message in Model)
                     {
-
                         if (!message.IsUser)
                         {
-                            <div id="responseDisplay" class="response" style="text-align:left">                                                                  
-                                    <pre>@message.Content</pre>
-                            </div>          
+                                <div id="responseDisplay" class="response" style="text-align:left">
+                                <pre>@message.Content</pre>
+                            </div>
                         }
                         else
                         {
-                            <div id="responseDisplay" class="question" style="text-align:right">                                                                        
-                                    <pre>@message.Content</pre>
-                            </div>                          
+                                <div id="responseDisplay" class="question" style="text-align:right">
+                                <pre>@message.Content</pre>
+                            </div>
                         }
                     }
                 }
-            </div>                
-            <div class="textMessage">
-                <input for="question" type="text" name="question" placeholder="Sorunuzu buraya girin" required />
-                <button type="submit" class="btn ">Gönder</button>    
-                <input type="file" id="file-input" class="file-input" name="image" accept="image/*" style="display:none;" onchange="updateLabel()" />
-                <button type="button" class="resim-button" onclick="document.getElementById('file-input').click();">Görsel Yükle</button>
+                <div class="textMessage">
+                    <input for="question" type="text" name="question" placeholder="Sorunuzu buraya girin..." required>
+                    <button class="file-button" onclick="document.getElementById('file-input').click();">
+                        <img src="~/image/atac.png" alt="Attach" style="width: 20px; height: 20px;">
+                    </button>
+                    <input type="file" id="file-input" class="file-input" name="image" accept="image/*" style="display:none;">
+                    <button type="submit" class="btn">Gönder</button>
+                </div>
+                    <div class="col-4">
+                    </div>
             </div>
-        </div>   
-    </div>
+         </div> 
+      </div>
+   </div>
+
 </form>            
 
 

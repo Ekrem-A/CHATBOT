@@ -1,13 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿using Azure.AI.OpenAI.Assistants;
+using Azure;
+using Newtonsoft.Json;
 using System.Text;
+using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc.Diagnostics;
+
 
 namespace GPT_INTEGRATION.Service
-{
+{    
     public class OpenAIService
     {
         private readonly HttpClient _httpClient;
         private const string ApiUrl = "https://api.openai.com/v1/chat/completions";
-        private readonly string _apiKey;
+        private readonly string _apiKey;  
 
         public OpenAIService(string apiKey)
         {
@@ -61,7 +66,7 @@ namespace GPT_INTEGRATION.Service
                         new { type = "image_url", image_url = new { url = $"data:image/jpeg;base64,{base64Image}" } }
                     }
                 }
-            },
+             },
                 max_tokens = 300
             };
 
@@ -75,6 +80,73 @@ namespace GPT_INTEGRATION.Service
             var result = await response.Content.ReadAsStringAsync();
             return result;
         }
+
+
+        //public async Task<OpenAIFile> UploadFileToAssistantAsync(string filePath)
+        //{
+        //    // Dosyayı yüklemek için dosya içeriklerini oku
+        //    byte[] fileBytes = await File.ReadAllBytesAsync(filePath);
+        //    var content = new ByteArrayContent(fileBytes);
+        //    content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("multipart/form-data");
+
+        //    // Dosyayı API'ye yükle
+        //    var uploadResponse = await _httpClient.PostAsync("https://api.openai.com/v1/files", content);
+        //    uploadResponse.EnsureSuccessStatusCode();
+
+        //    var result = await uploadResponse.Content.ReadAsStringAsync();
+        //    var openAIFile = JsonConvert.DeserializeObject<Response<OpenAIFile>>(result).Value;
+
+        //    return openAIFile;
+        //}
+
+        //public async Task<string> CreateAssistantWithFileAsync(OpenAIFile uploadedFile, string message)
+        //{
+
+        //    var client = new AssistantsClient("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");
+        //    // Asistan oluşturma isteği
+        //    var assistantPayload = new AssistantCreationOptions("gpt4")
+        //    {
+        //        Name = "SDK Test Assistant - Retrieval",
+        //        Instructions = "You are a helpful assistant that can help fetch data from files you know about.",
+        //        Tools = { new CodeInterpreterToolDefinition() }
+
+        //    };
+        //    string pdfFilePath = "Anayasa.pdf";
+
+        //    var fileUploadResponse = await client.UploadFileAsync(pdfFilePath, OpenAIFilePurpose.Assistants);
+
+
+        //    assistantPayload.FileIds.Add(fileUploadResponse.Value.Id);
+
+        //    assistantPayload.Instructions += $" The file with id {fileUploadResponse.Value.Id} " + $"has a original file name of{Path.GetFileName(args[0])} and is" + $" a {Path.GetExtension(args[0]).Replace(".", string.Empty)}file. ";
+
+        //    var assistant = await client.CreateAssistantAsync(assistantPayload);
+        //    var thread = await client.CreateThreadAsync();
+
+        //    while (!string.IsNullOrWhiteSpace(message))
+
+        //    {
+        //        string? lastMessageId = null;
+
+        //        await client.CreateMessageAsync(thread.Value.Id, MessageRole.User, message);
+        //        var run = await client.CreateRunAsync(thread.Value.Id, new CreateRunOptions(assistant.Value.Id));
+
+
+        //        var messageResponse = await client.GetMessageAsync(thread.Value.Id,
+        //            order: ListSortOrder.Ascending,
+        //            after: lastMessageId
+        //            );
+        //    }
+        //    var jsonPayload = JsonConvert.SerializeObject(assistantPayload);
+        //    var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+        //    // API'ye isteği gönder
+        //    var response = await _httpClient.PostAsync("https://api.openai.com/v1/assistants", content);
+        //    response.EnsureSuccessStatusCode();
+
+        //    var result = await response.Content.ReadAsStringAsync();
+        //    return result; // Dilerseniz burada assistant ID'yi döndürebilirsiniz.
+        //}
     }
 }
 

@@ -16,7 +16,7 @@ builder.Services.AddScoped<IEmailSender, SmtpEmailSender>(i =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// OpenAI API anahtarýný appsettings.json'dan alýn
+// OpenAI API anahtarýný appsettings.json'dan alým
 var apiKey = builder.Configuration["OpenAI:ApiKey"];
 
 builder.Services.AddDistributedMemoryCache();  // Session için cache mekanizmasý
@@ -31,30 +31,13 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Identi
 builder.Services.AddDbContext<IdentityContext>(options =>
    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//// Identity hizmetini ekleyin
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//    .AddEntityFrameworkStores<IdentityContext>();
 
-// OpenAIService'i Dependency Injection'a ekleyin
+
+// OpenAIService'i Dependency Injection
 builder.Services.AddSingleton(new OpenAIService(apiKey));
 
 //builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-//builder.Services.ConfigureApplicationCookie(options =>
-//{
-//    options.LoginPath = "/Account/Login";
-//    options.LogoutPath = "/Account/Logout";
-//    options.AccessDeniedPath = "/Account/AccessDenied";
-//});
-
-// Giriþ iþlemi için cookie kullanýmý
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(options =>
-//    {
-//        options.LoginPath = "/Account/Login";  // Login iþlemi için yönlendirme
-//        options.AccessDeniedPath = "/Account/AccessDenied";
-//    });
 
 builder.Services.Configure<IdentityOptions>(options => {
     options.Password.RequiredLength = 6;
@@ -64,7 +47,6 @@ builder.Services.Configure<IdentityOptions>(options => {
     options.Password.RequireDigit = false;
 
     options.User.RequireUniqueEmail = true;
-    // options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
 
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
     options.Lockout.MaxFailedAccessAttempts = 5;
